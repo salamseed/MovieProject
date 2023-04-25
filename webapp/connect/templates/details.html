@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block body %}
+<style>
+.my_button:hover {
+    background-color: #007bff;
+    color: #fff;
+    transform: scale(1.1);
+}
+</style>
+<br><br>
+<div class="container">
+    <div class="col-md-6">
+         <img src="{{movies.image.url}}" height="500" width="350">
+    </div>
+    <div class="col-md-8">
+         <h3><u>{{movies.name}}</u></h3>
+         <h5>{{movies.year}}</h5>
+         {{movies.desc}}<br><br>
+         <a class="btn btn-warning my_button" href="{% url 'connect:update' movies.id %}">update</a>
+         <a class="btn btn-danger my_button" href="{% url 'connect:delete' movies.id %}">delete</a>
+    </div>
+</div>
+{% endblock %}

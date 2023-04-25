@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block body %}<br><br>
+<style>
+.movie-card:hover {
+    box-shadow: 0 0 10px rgba(0,0,0,.5);
+}
+.my_button:hover {
+    background-color: #007bff;
+    color: #fff;
+    transform: scale(1.1);
+}
+</style>
+<div style="color: blue;"><h2 align="center">Most Popular Movies</h2></div>
+<div style="color: blue;"><h5 align="center">Check It Out</h5></div><br><br>
+<div class="container">
+    <div class="row">
+        {% for i in movies %}
+        <div class="col-md-4 mb-4">
+            <div class="card movie-card" style="width: 18rem; height: 40rem;">
+                <img class="card-img-top" src="{{i.image.url}}" alt="Card image cap" height="390px" width="200px">
+                <div class="card-body">
+                    <h5 class="card-title">{{i.name}}</h5>
+                    <p class="card-text">{{i.desc | truncatechars:100}}</p><br>
+                    <div class="d-flex justify-content-center">
+                        <a href="{% url 'connect:description' i.id %}" class="btn btn-primary my_button">Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
